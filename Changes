@@ -1,27 +1,9 @@
-0.04    2005-05-17
+Revision history for Perl extension DateTime::Format::SQLite
 
-- Added parsing for TIMESTAMP as returned by MySQL 4.1.  Patch by Mike
-Bissett.
+0.10 Sat Sep 20 00:00:00 2008
+	- minor cleanups for non-dev release
 
+0.01_20090913 Sat Sep 13 00:00:00 2008
+	- first developer release
 
-0.0301  2004-07-07
-
-- No code or doc changes, just a new version to force it be reindexed
-after some PAUSE confusion.
-
-
-0.03    2003-04-22
-
-- Internals cleanup by Iain Truskett.
-
-
-0.02    2003-04-01
-
-- Switch to Module::Build for installation.
-
-- Switch to using DateTime::Format::Builder internally.
-
-
-0.01    2003-03-19
-
-- First release
+$Id: Changes 4068 2008-09-20 18:41:28Z cfaerber $	

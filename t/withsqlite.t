@@ -1,4 +1,4 @@
-# $Id: format_date.t 1039 2003-05-30 14:04:49Z cfaerber $
+# $Id: withsqlite.t 4064 2008-09-13 16:54:37Z cfaerber $
 #
 use strict;
 use warnings;
@@ -69,7 +69,6 @@ plan tests => 8 * 2;
 my $file = "sql$$.tmp";
 my $dbh = DBI->connect("dbi:SQLite:dbname=$file","","");
 
-
 foreach my $result (keys %tests) {
   my $dt = DateTime->new( %{$tests{$result}} );
 
@@ -86,3 +85,5 @@ foreach my $result (keys %tests) {
 	$result))->jd - $dt->jd,
       '<', 0.0001, "$result/format");
 }
+
+unlink $file;

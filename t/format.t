@@ -1,4 +1,4 @@
-# $Id: format_date.t 1039 2003-05-30 14:04:49Z cfaerber $
+# $Id: format.t 4064 2008-09-13 16:54:37Z cfaerber $
 #
 use strict;
 use warnings;

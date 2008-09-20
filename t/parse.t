@@ -1,6 +1,4 @@
-# $Id: parse_datetime.t 1046 2003-07-16 13:42:35Z cfaerber $
-#
-# $Id: format_date.t 1039 2003-05-30 14:04:49Z cfaerber $
+# $Id: parse.t 4068 2008-09-20 18:41:28Z cfaerber $
 #
 use strict;
 use warnings;

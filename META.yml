@@ -1,15 +1,22 @@
 --- #YAML:1.0
-name:                DateTime-Format-SQLite
-version:             0.01_20090913
-abstract:            Parse and format SQLite dates and times
-license:             perl
-author:              
+name:               DateTime-Format-SQLite
+version:            0.10
+abstract:           Parse and format SQLite dates and times
+author:
     - Claus Faerber <CFAERBER@cpan.org>
-generated_by:        ExtUtils::MakeMaker version 6.42
-distribution_type:   module
-requires:     
-    DateTime:                      0.1
-    DateTime::Format::Builder:     0.6
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+requires:
+    DateTime:             0.1
+    DateTime::Format::Builder:  0.6
+    perl:                 5.003
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.45_02
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

@@ -1,11 +1,12 @@
+# $Id: SQLite.pm 4068 2008-09-20 18:41:28Z cfaerber $
+#
 package DateTime::Format::SQLite;
-# $Id: DBI.pm 4059 2008-09-12 18:32:04Z cfaerber $
 
 use strict;
 use vars qw ($VERSION);
 use warnings;
 
-our $VERSION = '0.01_20090913';
+our $VERSION = '0.10';
 $VERSION = eval { $VERSION };
 
 # "days since noon in Greenwich on November 24, 4714 B.C."
@@ -129,10 +130,11 @@ DateTime::Format::SQLite - Parse and format SQLite dates and times
 
 =head1 DESCRIPTION
 
-This module understands the formats used by SQLite for its date,
-datetime and time functions.  It can be used to parse these
-formats in order to create DateTime objects, and it can take a
-DateTime object and produce a timestring accepted by SQLite.
+This module understands the formats used by SQLite for its
+C<date>, C<datetime> and C<time> functions.  It can be used to
+parse these formats in order to create L<DateTime> objects, and it
+can take a DateTime object and produce a timestring accepted by
+SQLite.
 
 B<NOTE:> SQLite does not have real date/time types but stores
 everything as strings. This module deals with the date/time
@@ -142,9 +144,9 @@ You will usually want to store your dates in one of these formats.
 
 =head1 METHODS
 
-This class offers the following methods.  All of the parsing
+This class offers the methods listed below.  All of the parsing
 methods set the returned DateTime object's time zone to the B<UTC>
-zone, because SQLite does always uses UTC for date calculations.
+zone because SQLite does always uses UTC for date calculations.
 This means your dates may seem to be one day off if you convert
 them to local time.
 
@@ -155,7 +157,7 @@ them to local time.
 Given a C<$string> representing a date, this method will return a new
 C<DateTime> object.
 
-The C<$string> may be in one of the formats understood by SQLite's
+The C<$string> may be in any of the formats understood by SQLite's
 C<date>, C<time>, C<datetime>, C<julianday> and C<strftime> SQL
 functions or it may be in the format returned by these functions
 (except C<strftime>, of course).
@@ -163,8 +165,8 @@ functions or it may be in the format returned by these functions
 The time zone for this object will always be in UTC because SQLite
 assumes UTC for all date calculations.
 
-If C<$string> contains no date, 2000-01-01 is assumed (just as
-SQLite).
+If C<$string> contains no date, the parser assumes 2000-01-01
+(just like SQLite).
 
 If given an improperly formatted string, this method may die.
 
@@ -203,15 +205,20 @@ function uses.
 
 =back
 
-=head1 AUTHOR / LICENSE
+=head1 AUTHOR
+
+Claus Färber <CFAERBER@cpan.org>
+
+based on C<DateTime::Format::MySQL> by David Rolyks.
+
+=head1
 
 Copyright © 2008 Claus Färber.
 
-based on C<DateTime::Format::MySQL> Copyright © 2003 David Rolsky. 
+Copyright © 2003 David Rolsky. 
 
-All rights reserved. This program is free software; you can
-redistribute it and/or modify it under the same terms as Perl
-itself.
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
 
 The full text of the license can be found in the LICENSE file
 included with this module.

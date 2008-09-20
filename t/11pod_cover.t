@@ -1,4 +1,4 @@
-# $Id: 11pod_cover.t 78 2008-09-13 10:12:34Z cfaerber $
+# $Id: 11pod_cover.t 4064 2008-09-13 16:54:37Z cfaerber $
 
 use strict;
 use Test::More;
