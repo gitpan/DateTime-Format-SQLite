@@ -3,6 +3,7 @@ Makefile.PL
 Changes
 LICENSE
 MANIFEST
+SIGNATURE
 lib/DateTime/Format/SQLite.pm
 t/00load.t
 t/10pod.t
@@ -10,5 +11,4 @@ t/11pod_cover.t
 t/withsqlite.t
 t/format.t
 t/parse.t
-SIGNATURE
-META.yml                                 Module meta-data (added by MakeMaker)
+META.yml

@@ -1,4 +1,4 @@
-# $Id: Makefile.PL 4068 2008-09-20 18:41:28Z cfaerber $
+# $Id: Makefile.PL 4363 2009-12-10 16:47:25Z cfaerber $
 
 use 5.003;
 use ExtUtils::MakeMaker;
@@ -28,3 +28,13 @@ WriteMakefile(
         },
     ),
 );
+
+sub MY::postamble {
+return <<EOF
+release: release-cpan
+
+release-cpan:
+	cpan-upload \$(DISTVNAME).tar\$(SUFFIX)
+
+EOF
+}

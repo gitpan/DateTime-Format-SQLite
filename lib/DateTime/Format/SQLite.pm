@@ -1,4 +1,4 @@
-# $Id: SQLite.pm 4068 2008-09-20 18:41:28Z cfaerber $
+# $Id: SQLite.pm 4363 2009-12-10 16:47:25Z cfaerber $
 #
 package DateTime::Format::SQLite;
 
@@ -6,7 +6,7 @@ use strict;
 use vars qw ($VERSION);
 use warnings;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 $VERSION = eval { $VERSION };
 
 # "days since noon in Greenwich on November 24, 4714 B.C."
@@ -32,9 +32,10 @@ use DateTime::Format::Builder
 
 	  # formats 3, 4, 6 and 7
 	  #
-          { params => [ qw( year month day hour minute second ) ],
-            regex  => qr/^(-?\d+)-(\d{1,2})-(\d{1,2})[Tt ](\d{1,2}):(\d{1,2}):(\d{1,2}(\.\d*)?)$/,
+          { params => [ qw( year month day hour minute second nanosecond ) ],
+            regex  => qr/^(-?\d+)-(\d{1,2})-(\d{1,2})[Tt ](\d{1,2}):(\d{1,2}):(\d{1,2})(\.\d*)?$/,
             extra  => { time_zone => 'UTC' },
+	    postprocess => \&_fix_nanoseconds,
           },
 
 	  # format 8
@@ -46,9 +47,10 @@ use DateTime::Format::Builder
 
 	  # format 9, 10
 	  #
-          { params => [ qw( hour minute second ) ],
-            regex  => qr/^(\d{1,2}):(\d{1,2}):(\d{1,2}(\.\d*)?)?$/,
+          { params => [ qw( hour minute second nanosecond ) ],
+            regex  => qr/^(\d{1,2}):(\d{1,2}):(\d{1,2})(\.\d*)?$/,
             extra  => { time_zone => 'UTC', 'year' => 2000, },
+	    postprocess => \&_fix_nanoseconds,
           },
 
 	  # format 11
@@ -111,9 +113,19 @@ sub format_julianday
     return $dt->jd;
 }
 
+sub _fix_nanoseconds 
+{
+    my %args = @_;
+    $args{'parsed'}->{'nanosecond'} ||= 0;
+    $args{'parsed'}->{'nanosecond'} *= 1000 * 1000 * 1000;
+    1;
+}
+
 1;
 
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
@@ -209,7 +221,7 @@ function uses.
 
 Claus Färber <CFAERBER@cpan.org>
 
-based on C<DateTime::Format::MySQL> by David Rolyks.
+based on C<DateTime::Format::MySQL> by David Rolsky.
 
 =head1
 
